@@ -27,5 +27,14 @@ if tabela_html is None:
 # Converte automaticamente com pandas
 df = pd.read_html(str(tabela_html))[0]
 
+import os
+
+OUTPUT_PATH = "../data/raw/dados_bancos.csv"
+
+os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+
+df.to_csv(OUTPUT_PATH, index=False, encoding="utf-8-sig")
+
+print(f"CSV gerado com sucesso em: {OUTPUT_PATH}")
 print("Tabela extraída com sucesso!")
 print(df.head())
